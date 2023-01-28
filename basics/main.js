@@ -18,4 +18,18 @@ const camera = new THREE.PerspectiveCamera(
 const axesHelper = new THREE.AxesHelper(10)
 scene.add(axesHelper)
 camera.position.set(0,2,5)
-renderer.render(scene,camera)
+
+const boxGeometry = new THREE.BoxGeometry()
+const boxMaterial = new THREE.MeshBasicMaterial({color: 'aqua'})
+const box = new THREE.Mesh(boxGeometry,boxMaterial)
+scene.add(box)
+
+function animate(){
+  box.rotation.x -= 0.01
+  box.rotation.y -= 0.01
+  box.rotation.z -= 0.01
+
+  renderer.render(scene,camera)
+}
+
+renderer.setAnimationLoop(animate)
